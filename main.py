@@ -12,6 +12,11 @@ print(b)
 g = bookings.query("assigned_room_type != reserved_room_type")
 print(g)
 
+h = bookings.query('arrival_date_year == 2016 and is_canceled == 0').value_counts('arrival_date_month')
+print(h)
+k = bookings.query('arrival_date_year == 2017 and is_canceled == 0').value_counts('arrival_date_month')
+print(k)
+
 bookings['total_kids'] = bookings[['children', 'babies']].sum(axis=1)
 bookings['has_kids'] = bookings['total_kids'] > 0
 c = bookings.query('has_kids == False and is_canceled == 1').shape[0]/bookings.query('has_kids == False').shape[0]*100
