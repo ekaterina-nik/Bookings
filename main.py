@@ -22,7 +22,7 @@ print(k)
 l = bookings.query("hotel == 'City Hotel' and is_canceled == 1").groupby('arrival_date_year').arrival_date_month.value_counts()
 print(l)
 
-m = bookings[['adults', 'children', 'babies']].agg({'adults': 'mean', 'children': 'mean', 'babies': 'mean'})
+m = bookings[['adults', 'children', 'babies']].agg({'adults': 'mean', 'children': 'mean', 'babies': 'mean'}).idxmax (axis= 0 )
 print(m)
 
 bookings['total_kids'] = bookings[['children', 'babies']].sum(axis=1)
