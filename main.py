@@ -25,12 +25,13 @@ print(m)
 
 bookings['total_kids'] = bookings[['children', 'babies']].sum(axis=1)
 bookings['has_kids'] = bookings['total_kids'] > 0
-c = bookings.query('has_kids == False and is_canceled == 1').shape[0]/bookings.query('has_kids == False').shape[0]*100
-d = round(c, 2)
-print(d)
-e = bookings.query('has_kids == True and is_canceled == 1').shape[0]/bookings.query('has_kids == True').shape[0]*100
-f = round(e, 2)
-print(f)
+
+n = bookings.groupby('hotel').agg({'total_kids': 'mean'})
+print(n)
+
+churn_rate_no_kids = bookings.query('has_kids == False and is_canceled == 1').shape[0]/bookings.query('has_kids == False').shape[0]*100
+churn_rate_with_kids = bookings.query('has_kids == True and is_canceled == 1').shape[0]/bookings.query('has_kids == True').shape[0]*100
+print(churn_rate_no_kids, churn_rate_with_kids)
 
 
 
