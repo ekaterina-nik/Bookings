@@ -1,7 +1,7 @@
 import pandas as pd
 pd.set_option('display.max_columns', 30)
 pd.set_option('display.width', 2000)
-bookings = pd.read_csv('C:/Users/Екатерина/Downloads/bookings.csv', sep=';')
+bookings = pd.read_csv('https://.../bookings.csv', sep=';')
 
 bookings.columns = bookings.columns.str.replace(' ', '_').str.lower()
 
