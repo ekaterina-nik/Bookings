@@ -12,10 +12,13 @@ print(b)
 g = bookings.query("assigned_room_type != reserved_room_type")
 print(g)
 
-h = bookings.query('arrival_date_year == 2016 and is_canceled == 0').value_counts('arrival_date_month')
+h = bookings.query('arrival_date_year == 2016 and is_canceled == 0').arrival_date_month.value_counts()
 print(h)
-k = bookings.query('arrival_date_year == 2017 and is_canceled == 0').value_counts('arrival_date_month')
+k = bookings.query('arrival_date_year == 2017 and is_canceled == 0').arrival_date_month.value_counts()
 print(k)
+
+l = bookings.query("hotel == 'City Hotel' and is_canceled == 1").groupby('arrival_date_year').arrival_date_month.value_counts()
+print(l)
 
 bookings['total_kids'] = bookings[['children', 'babies']].sum(axis=1)
 bookings['has_kids'] = bookings['total_kids'] > 0
