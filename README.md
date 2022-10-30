@@ -1,5 +1,5 @@
 # Bookings
-analysis of hotel booking data
+Analysis of hotel booking data, training project
 
 
 Загружаем датасет bookings.csv с разделителем ";", приводим названия колонок к нижнему регистру, заменяем пробелы на знак нижнего подчеркивания.
